@@ -1,0 +1,45 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler dev -e local --port 3001",
+    "start": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "prisma:generate": "prisma generate && tsx tools/fix-datamodel",
+    "prisma:migrate": "prisma migrate dev && tsx tools/fix-datamodel && tsx tools/migrate.ts && echo Y | wrangler d1 migrations apply --local --env local test-db",
+    "prisma:seed": "cloudflare-exec --e local prisma/seed",
+    "production:create-db": "wrangler d1 create d1-blog",
+    "production:prisma:migrate": "echo Y | wrangler d1 migrations apply d1-blog --remote",
+    "production:secret": "wrangler secret put SECRET_KEY"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240320.1",
+    "@colors/colors": "^1.6.0",
+    "@types/cookie": "^0.6.0",
+    "@types/minimist": "^1.2.5",
+    "minimist": "^1.2.8",
+    "prisma": "^5.11.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.3",
+    "wrangler": "^3.38.0"
+  },
+  "dependencies": {
+    "@node-libraries/semaphore": "^1.0.3",
+    "@pothos/core": "^3.41.0",
+    "@pothos/plugin-prisma": "^3.65.0",
+    "@pothos/plugin-prisma-utils": "^0.14.0",
+    "@prisma/adapter-d1": "^5.11.0",
+    "@prisma/client": "^5.11.0",
+    "cloudflare-exec": "^0.0.6",
+    "cookie": "^0.6.0",
+    "firebase-storage": "^1.1.4",
+    "graphql": "^16.8.1",
+    "graphql-yoga": "^5.2.0",
+    "jose": "^5.2.3",
+    "pothos-prisma-generator": "^1.0.2",
+    "pure-uuid": "^1.8.1",
+    "remark": "^15.0.1"
+  }
+}
