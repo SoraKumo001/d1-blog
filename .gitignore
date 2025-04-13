@@ -1,0 +1,12 @@
+node_modules
+.react-router
+/.cache
+/build
+
+.wrangler
+.dev.vars
+.env.development
+.env.production
+
+dev.db*
+/migrations

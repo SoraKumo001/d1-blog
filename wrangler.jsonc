@@ -1,0 +1,36 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "d1-blog",
+  "compatibility_date": "2025-01-28",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./workers/app.ts",
+  "assets": {
+    "directory": "./build/client",
+    "binding": "ASSETS"
+  },
+  "logpush": true,
+  "observability": {
+    "enabled": true
+  },
+  "limits": {
+    "cpu_ms": 10000
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "d1-blog",
+      "database_id": "26ddf958-be07-4a73-a733-0332166d216e"
+    }
+  ],
+  "env": {
+    "local": {
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "test-db",
+          "database_id": "test-db"
+        }
+      ]
+    }
+  }
+}

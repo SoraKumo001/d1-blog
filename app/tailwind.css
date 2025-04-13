@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  include: button, checkbox, toggle, modal, theme;
+}
+@source "../node_modules/react-daisyui/dist";
+
+@layer utilities {
+  input,
+  textarea,
+  select,
+  button {
+    border: 0px solid;
+    border-radius: 0;
+    padding: 0;
+    color: inherit;
+    background-color: transparent;
+  }
+  body {
+    font-family: "Noto Sans JP", ui-sans-serif, system-ui, sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+    color: rgba(0, 0, 0, 0.87);
+    background-color: white;
+    font-weight: 400;
+    overflow: hidden;
+  }
+  *,
+  :before,
+  :after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+  }
+  :root {
+    --color-primary: var(--color-blue-500);
+  }
+}
